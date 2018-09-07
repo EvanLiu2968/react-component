@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # testing before publish
-npm run lint && npm run build && npm run test
+# npm run lint && npm run build && npm run test
+npm run build
 
 if [ $? = 0 ]; then
   # purge dist
@@ -19,6 +20,8 @@ if [ $? = 0 ]; then
 
   # keep es6 for next.js
   cp build/npm/next.js next.js
+  # publish to npm
+  # npm publish --access public
 else
   echo 'Code cant be verify, plz check ~'
 fi
