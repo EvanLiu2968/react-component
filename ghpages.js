@@ -1,5 +1,7 @@
 /*
  * git subtree push --prefix=dist/site origin gh-pages
+ * node ./node_modules/gh-pages/bin/gh-pages-clean
+ * node ./ghpages
  */
 
 const ghpages = require('gh-pages');

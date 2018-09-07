@@ -1,5 +1,5 @@
 {
-  "name": "react-component",
+  "name": "@evanliu2968/react-component",
   "version": "0.1.0",
   "description": "Components for React",
   "private": false,
@@ -7,12 +7,13 @@
   "jsnext:main": "next.js",
   "scripts": {
     "start": "cd site && node run.js",
-    "test": "flow check && BABEL_ENV=development jest",
+    "test": "cross-env BABEL_ENV=development jest",
     "jest": "jest",
     "lint": "eslint src libs site --quiet",
     "build": "cd build/site && webpack --progress",
     "prepublish": "./build/scripts/prepare.sh",
     "postpublish": "./build/scripts/release.sh",
+    "ghpages": "node ./node_modules/gh-pages/bin/gh-pages-clean && node ./ghpages",
     "ii": "npm install --registry https://registry.npm.taobao.org"
   },
   "repository": {
@@ -43,6 +44,7 @@
     "babel-standalone": "^6.26.0",
     "codemirror": "^5.37.0",
     "core-js": "^2.5.6",
+    "cross-env": "^5.2.0",
     "css-loader": "^0.28.7",
     "element-theme-default": "^1.4.13",
     "enzyme": "^3.2.0",
