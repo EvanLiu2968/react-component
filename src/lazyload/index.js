@@ -3,41 +3,7 @@
  */
 import React from 'react'
 import LazyLoad, { forceCheck } from './lazyload';
-import webInject from 'web-inject'
-
-// 注入 animate style
-// fadein
-webInject.css(`
-.lazyload-animated {
-  -webkit-animation-duration: 700ms;
-  animation-duration: 700ms;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-.lazyload-fadeIn {
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
-}
-`)
+import './index.css'
 
 class ImgLazyLoad extends React.Component {
   constructor(props) {
@@ -47,17 +13,16 @@ class ImgLazyLoad extends React.Component {
     }
   }
   componentDidMount(){
-    //
+    // forceCheck()
   }
   onLazyLoad(component){
-    // console.log('start load image.')
-    let img = new Image(); //创建一个Image对象，实现图片的预下载
+    let img = new Image();
     img.src = this.props.src;
-    if (img.complete) { // 如果图片已经存在于浏览器缓存，直接调用回调函数
+    if (img.complete) {
       this.loadedHandle()
-      return; // 直接返回，不用再处理onload事件
+      return;
     }
-    img.onload = ()=> { //图片下载完毕时异步调用callback函数。
+    img.onload = ()=> {
       this.loadedHandle()
     };
   }
@@ -79,17 +44,16 @@ class ImgLazyLoad extends React.Component {
 
 ImgLazyLoad.defaultProps = {
   placeholder:<div className="img-placeholder"></div>,
-  animate:'fadeIn', //'fadein':透明度渐变 'blurIn':模糊渐变(参考知乎)
+  animate:'fadeIn', //'fadein' 'blurIn'
   overflow: false,
   once:true
 };
 
-/* 懒加载图片 */
 LazyLoad.Img = ImgLazyLoad
 
 export default LazyLoad
 
-/* 自定义懒加载组件 */
+/* HOC Lazyload Component */
 const getDisplayName = WrappedComponent => WrappedComponent.displayName || WrappedComponent.name || 'Component';
 
 export const lazyload = (options = {}) => function (WrappedComponent) {

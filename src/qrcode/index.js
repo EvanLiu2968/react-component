@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import qrcode from 'qrcode'
 import merge from 'lodash/merge'
+// var toSJIS =  require('qrcode/helper/to-sjis')
 
-function generateQRCode(url, options){
+export const generateQRCode = function (text, options, canvas){
   options = merge({
     margin: 1,
     width: 200,
@@ -12,47 +13,40 @@ function generateQRCode(url, options){
       dark: '#000000ff', //6位颜色+2位明度，支持3位、4位、6位、8位
       light: '#ffffffff',
     },
+    // toSJISFunc: toSJIS, // 汉字扩展
     // type: 'png',
     // rendererOpts: {
     //   quality: 0.3,
     //   width: 200,
     //   height: 200,
     // }
-    // version: 7,                      // Calculated QR Code version (1 - 40) 版本越高点数越多越密，容纳数据越多
-    // errorCorrectionLevel: 'Q',       // Error Correction Level [choices: "L", "M", "Q", "H"]
-    // maskPattern: 4                   // Calculated Mask pattern (0 - 7)
+    // version: 7,                   // Calculated QR Code version (1 - 40) 版本越高点数越多越密，容纳数据越多
+    errorCorrectionLevel: 'Q',       // Error Correction Level [choices: "L", "M", "Q", "H"]
+    maskPattern: 4                   // Calculated Mask pattern (0 - 7)
   }, options)
   // 可用于浏览器端和node端
   return new Promise((resolve, reject) => {
-    qrcode.toDataURL(url, options , function (err, data) {
-      if(err){
-        reject(err)
-      }
-      resolve(data) //返回 data:image/png;base64,...
-    })
+    if(canvas){
+      qrcode.toCanvas(canvas, text, options , function (err, data) {
+        if(err){
+          reject(err)
+        }
+        resolve(data)
+      })
+    }else{
+      qrcode.toDataURL(text, options , function (err, data) {
+        if(err){
+          reject(err)
+        }
+        resolve(data) //return data:image/png;base64,...
+      })
+    }
   })
 }
-
-/* 
- * test
-*/
-// generateQRCode('www.evanliu2968.com.cn').then((data)=>{
-//   data = data.replace(/^(data:image\/(png|jpg|jpeg);base64,)/,'')
-//   fs.writeFile('qrcode.png',new Buffer(data,'base64'),(err)=>{
-//     if(err){
-//       console.log('生成二维码错误')
-//     }else{
-//       console.log('生成二维码成功')
-//     }
-//   })
-// })
 
 class Qrcode extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      src: ''
-    }
   }
   componentDidMount(){
     this.work()
@@ -62,45 +56,63 @@ class Qrcode extends React.Component {
     this.work()
   }
   work = ()=>{
-    generateQRCode(this.props.url, {
-      width: this.props.width,
+    generateQRCode(this.props.text, merge({}, this.props, {
       color: {
         dark: this.props.color,
         light: this.props.bgColor,
-      },
-      margin: this.state.margin,
-      scale: this.props.scale
-    }).then((src)=>{
-      this.setState({
-        src: src
-      })
+      }
+    }), this.node).then((src)=>{
+      // this.node.src = src;
+      if(this.props.logo){
+        let img = new Image();
+        img.src = this.props.logo;
+        if (img.complete) {
+          this.loadedHandle(img)
+          return;
+        }
+        img.onload = ()=> {
+          this.loadedHandle(img)
+        };
+      }
     })
   }
+  loadedHandle(img){
+    const { width, logoWidth } = this.props;
+    const cxt=this.node.getContext("2d");
+    const halfWidth = (width-logoWidth)/2;
+    cxt.drawImage(img,0,0,img.width,img.height,halfWidth,halfWidth,logoWidth,logoWidth);
+  }
   render(){
-    return <img className={this.props.className} src={this.state.src} />
+    return <canvas ref={(e) => { this.node = e; }} className={this.props.className} />
   }
 }
 
 Qrcode.propTypes = {
-  url: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
   logo: PropTypes.string,
+  logoWidth: PropTypes.number,
   width: PropTypes.number.isRequired,
   color: PropTypes.string.isRequired,
   bgColor: PropTypes.string.isRequired,
   margin: PropTypes.number,
   scale: PropTypes.number,
-  className: PropTypes.string.isRequired
+  className: PropTypes.string.isRequired,
+  errorCorrectionLevel: PropTypes.string.isRequired,
+  maskPattern: PropTypes.number,
 }
 
 Qrcode.defaultProps = {
-  url: '',
+  text: '',
   logo: '',
+  logoWidth: 40,
   width: 200,
   color: '#000000ff',
   bgColor: '#ffffffff',
   margin: 1,
   scale: 4,
-  className: 'qrcode'
+  className: 'qrcode',
+  errorCorrectionLevel: 'Q',
+  maskPattern: 4,
 };
 
 export default Qrcode

@@ -2,7 +2,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import './index.css'
+import './index.scss'
 
 class Loading extends React.Component {
   constructor(props) {
@@ -77,9 +77,44 @@ class Loading extends React.Component {
     }
   }
 
+  getLoading(type){
+    switch (type){
+      case 'circular':
+        return (
+          <svg className="circular" viewBox="25 25 50 50">
+            <circle className="path" cx="50" cy="50" r="20" fill="none" />
+          </svg>
+        )
+      case 'comet':
+        return (
+          <div className="el-loading-comet">
+            <div className="loader"></div>
+          </div>
+        )
+      case 'swell':
+        return (
+          <div className="el-loading-swell">
+            <div className="loader"></div>
+          </div>
+        )
+      case 'stretch':
+        return (
+          <div className="el-loading-stretch">
+            <div className="loader"></div>
+          </div>
+        )
+      default:
+        return (
+          <svg className="circular" viewBox="25 25 50 50">
+            <circle className="path" cx="50" cy="50" r="20" fill="none" />
+          </svg>
+        )
+    }
+  }
+
   render() {
     const { loading, fullscreen } = this.state;
-    const { text } = this.props;
+    const { text, type } = this.props;
 
     return (
       <div style={this.getStyle()} className={this.props.className}>
@@ -100,9 +135,7 @@ class Loading extends React.Component {
             display: 'inline-block',
             left: 0
           }}>
-            <svg className="circular" viewBox="25 25 50 50">
-              <circle className="path" cx="50" cy="50" r="20" fill="none" />
-            </svg>
+            { this.getLoading(type)}
             {
               text && <p className="el-loading-text">{text}</p>
             }
@@ -115,12 +148,14 @@ class Loading extends React.Component {
 }
 
 Loading.propTypes = {
+  type: PropTypes.string,
   loading: PropTypes.bool,
   fullscreen: PropTypes.bool,
   text: PropTypes.string
 };
 
 Loading.defaultProps = {
+  type: 'circular',
   fullscreen: true,
   text: '正在加载中',
   loading: true

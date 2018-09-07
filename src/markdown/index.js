@@ -2,7 +2,13 @@
  * markdown
  */
 import React from 'react'
+// import webInject from 'web-inject'
 import './index.css'
+
+// http://www.bootcdn.cn/highlight.js/
+// https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css
+// https://cdn.bootcss.com/highlight.js/9.12.0/styles/googlecode.min.css
+// webInject.css('https://cdn.bootcss.com/highlight.js/9.12.0/styles/vs.min.css')
 // https://github.com/jonschlinkert/remarkable
 var Remarkable = require('remarkable');
 var hljs = require('highlight.js');

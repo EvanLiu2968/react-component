@@ -1,4 +1,4 @@
-## Loading 加载动画
+## Loading 加载
 
 提供多种样式的加载动画。
 
@@ -10,9 +10,24 @@
 ```js
 render() {
   return (
-    <div style={{minHeight: '100px'}}>
+    <div className="demo-flex" style={{minHeight: '100px'}}>
       <Loading 
-        type={'circle'}
+        type={'circular'}
+        fullscreen={false}
+        show={true}/>
+      <Loading 
+        type={'comet'}
+        text={'loading'}
+        fullscreen={false}
+        show={true}/>
+      <Loading 
+        type={'swell'}
+        text={'拼命加载中'}
+        fullscreen={false}
+        show={true}/>
+      <Loading 
+        type={'stretch'}
+        text={'请耐心等待'}
         fullscreen={false}
         show={true}/>
     </div>
@@ -26,8 +41,7 @@ render() {
 ### Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| **title** | 标题，**必选参数** | string | — | — |
-| type | 样式类型 | string | — | circle |
+| type | 样式类型 | string | circular/comet/swell/stretch | circular |
 | show | 是否显示 | boolean | — | true |
 | fullscreen | 是否全屏 | boolean | — | false |
 | text | 显示文字 | string | — | 正在加载中 |

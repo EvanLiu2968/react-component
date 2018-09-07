@@ -411,3 +411,10 @@ body {
 .page-component-up:hover {
   opacity: 1;
 }
+
+.demo-flex{
+  display: flex;
+  &>div{
+    flex: 1;
+  }
+}

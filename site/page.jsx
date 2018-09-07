@@ -110,7 +110,7 @@ export default class App extends React.Component {
                 <a className="active">{this.getLocale('misc.component')}</a>
               </li>
               <li className="nav-item">
-                <a href={`https://github.com/EvanLiu2968/react-component`} target="_blank" rel="noopener noreferrer">Github</a>
+                <a href={`https://github.com/EvanLiu2968/react-component`} target="_blank" rel="noopener noreferrer">GitHub</a>
               </li>
               <li className="nav-item">
                 <span className={classnames('nav-lang', { active: this.state.locale === 'zh-CN'})} onClick={this.setLocale.bind(this, 'zh-CN')}>中文</span>
