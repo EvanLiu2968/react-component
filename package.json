@@ -11,9 +11,9 @@
     "jest": "jest",
     "lint": "eslint src libs site --quiet",
     "build": "cd build/site && webpack --progress",
-    "prepublish": "./build/scripts/prepare.sh",
-    "postpublish": "./build/scripts/release.sh",
-    "ghpages": "node ./node_modules/gh-pages/bin/gh-pages-clean && node ./ghpages",
+    "prepublish": "node ./shell prepare",
+    "postpublish": "node ./shell release",
+    "gh": "rm -fr dist/site && npm run build && node ./node_modules/gh-pages/bin/gh-pages-clean && node ./shell ghpages",
     "reset": "npm config set registry http://registry.npmjs.org/",
     "ii": "npm install --registry https://registry.npm.taobao.org"
   },
