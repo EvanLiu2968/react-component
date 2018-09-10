@@ -33,10 +33,13 @@ class ImgLazyLoad extends React.Component {
   }
 
   render() {
-    let imgClassName=this.props.animate ? `lazyload-animated lazyload-${this.props.animate}` : ``
+    let imgClassName = this.props.animate ? `lazyload-animated lazyload-${this.props.animate}` : ``
     return (
       <LazyLoad {...this.props} onLazyLoad={this.onLazyLoad.bind(this)}>
-        {this.state.loaded?<img className={imgClassName} src={this.props.src} />:this.props.placeholder}
+        { this.state.loaded ? 
+        <img className={imgClassName} src={this.props.src} />
+        :
+        this.props.placeholder }
       </LazyLoad>
     );
   }

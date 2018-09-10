@@ -13,7 +13,8 @@ npm i @evanliu2968/react-component --save
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Qrcode } from '@evanliu2968/react-component';
+// import Qrcode from '@evanliu2968/react-component/qrcode'; // or import single component
 
-ReactDOM.render(<Qrcode url={'https://www.evanliu2968.com.cn'}/>, document.getElementById('app'));
+ReactDOM.render(<Qrcode text={'https://www.evanliu2968.com.cn'}/>, document.getElementById('app'));
 
 ```

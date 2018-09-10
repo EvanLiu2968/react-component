@@ -51,9 +51,12 @@ class Qrcode extends React.Component {
   componentDidMount(){
     this.work()
   }
-  componentWillReceiveProps(props){
-    this.props = props
+  componentWillReceiveProps(newProps){
+    this.props = newProps
     this.work()
+  }
+  shouldComponentUpdate(newProps, newState){
+    return false
   }
   work = ()=>{
     generateQRCode(this.props.text, merge({}, this.props, {
