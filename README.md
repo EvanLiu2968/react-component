@@ -1,8 +1,8 @@
 # React Component
 
-[![](https://travis-ci.org/evanliu2968/react-component.svg?branch=master)](https://travis-ci.org/evanliu2968/react-component)
-[![](https://img.shields.io/npm/v/@evanliu2968/react-component.svg)](https://www.npmjs.com/package/react-component)
-[![](https://img.shields.io/npm/dm/@evanliu2968/react-component.svg)](https://www.npmjs.com/package/react-component)
+[![](https://travis-ci.org/EvanLiu2968/react-component.svg?branch=master)](https://travis-ci.org/EvanLiu2968/react-component)
+[![](https://img.shields.io/npm/v/@evanliu2968/react-component.svg)](https://www.npmjs.com/package/@evanliu2968/react-component)
+[![](https://img.shields.io/npm/dm/@evanliu2968/react-component.svg)](https://www.npmjs.com/package/@evanliu2968/react-component)
 
 ## Documents
 

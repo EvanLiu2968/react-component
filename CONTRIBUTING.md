@@ -1,6 +1,6 @@
-# Element React Contributing Guide
+# React Component Contributing Guide
 
-We are very graceful that you are interested in contributing to `element-react`. Before submitting your contribution though, please make sure to take a moment and read through the following guidelines.
+We are very graceful that you are interested in contributing to `@evanliu2968/react-component`. Before submitting your contribution though, please make sure to take a moment and read through the following guidelines.
 
 ## Issue Guidelines
 
@@ -8,7 +8,7 @@ We are very graceful that you are interested in contributing to `element-react`.
 
 - The title of the issue should be written as `[Component Name]: Issue caption.` (e.g. `Button: Fix xxx bug`)
 
-- Please specify which version of `element-react` and `element-theme-default` you are using, and other related information.
+- Please specify which version of `@evanliu2968/react-component` you are using, and other related information.
 
 ## Pull Request Guidelines
 
