@@ -17,7 +17,11 @@ script:
   - npm run lint
   - npm run build
   - npm test
-  - npm run typescript-test
 
 notifications:
-  slack: eleme:3Nouwh5OgNugxccCsiFYpUIB
+  # slack: evanliu2968:3Nouwh5OgNugxccCsiFYpUIB
+  email:
+    recipients:
+      - 296823596@qq.com
+    on_success: change
+    on_failure: always
