@@ -4,6 +4,9 @@
  * node ./ghpages
  * cause of windows can't run shell with npm script
  */
+const path = require('path');
+const child_process = require('child_process');
+const ghpages = require('gh-pages');
 
 if(process.argv.length > 2){
   const params = process.argv.slice(2)
@@ -26,16 +29,14 @@ if(process.argv.length > 2){
 
 
 function runCmd(cmd, args, callback) {
-  var spawn = require('child_process').spawn;
-  var child = spawn(cmd, args);
-  var res = "";
+  const child = child_process.spawn(cmd, args);
+  let res = "";
 
   child.stdout.on('data', function(buffer) { res += buffer.toString(); });
   child.stdout.on('end', function() { callback (res) });
 }
 
 function ghPublish(){
-  const ghpages = require('gh-pages');
   ghpages.publish('dist/site', {
     branch: 'gh-pages',
     user: {
@@ -52,7 +53,7 @@ function ghPublish(){
 }
 
 function runShell(file){
-  let cwd = process.cwd()
+  const cwd = process.cwd()
   runCmd('sh', [path.join(cwd,`./build/scripts/${file}.sh`)], function(res){
     console.log(res)
     console.log(`build/scripts/${file}.sh 执行完成!`)
