@@ -9,12 +9,12 @@
 [https://evanliu2968.github.io/react-component/](https://evanliu2968.github.io/react-component/)
 
 ### Components List
-- `Lazyload`
-- `Echarts`
-- `Loading`
-- `asyncLoader` (HOC Component)
-- `Markdown`
 - `Qrcode`
+- `Lazyload`
+- `Loading`
+- `Echarts`
+- `Markdown`
+- `asyncLoader` (HOC Component)
 
 ## Getting Started
 
@@ -35,7 +35,7 @@ import { Lazyload } from '@evanliu2968/react-component';
 Also we provide an advanced way to [tree shaking](https://blog.engineyard.com/2016/tree-shaking) the code with [Rollup.js](http://rollupjs.org/) and [Webpack 2](https://webpack.github.io/)
 
 ```js
-import { Lazyload } from '@evanliu2968/react-component/lazyload';
+import Lazyload from '@evanliu2968/react-component/lazyload';
 ```
 
 ## Acknowledgments
