@@ -6,7 +6,7 @@
 
 二维码以 **`canvas`** 标签展示。
 
-::: demo Qrcode 组件一般只需设置`url`和`width`属性，默认前景色为纯黑，背景色为纯白。
+::: demo Qrcode 组件一般只需设置`text`和`width`属性，默认前景色为纯黑，背景色为纯白。
 ```js
 render() {
   return (

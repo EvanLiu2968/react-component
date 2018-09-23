@@ -113,6 +113,9 @@ export default class App extends React.Component {
                 <a href={`https://github.com/EvanLiu2968/react-component`} target="_blank" rel="noopener noreferrer">GitHub</a>
               </li>
               <li className="nav-item">
+                <a href={`https://evanliu2968.github.io/vue-component`} target="_blank" rel="noopener noreferrer">Vue Component</a>
+              </li>
+              <li className="nav-item">
                 <span className={classnames('nav-lang', { active: this.state.locale === 'zh-CN'})} onClick={this.setLocale.bind(this, 'zh-CN')}>中文</span>
                 <span> / </span>
                 <span className={classnames('nav-lang', { active: this.state.locale === 'en-US'})} onClick={this.setLocale.bind(this, 'en-US')}>En</span>
