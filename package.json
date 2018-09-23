@@ -5,6 +5,7 @@
   "private": false,
   "main": "dist/npm/es5/index.js",
   "jsnext:main": "next.js",
+  "module": "next.js",
   "scripts": {
     "start": "cd site && node run.js",
     "test": "cross-env BABEL_ENV=development jest",
