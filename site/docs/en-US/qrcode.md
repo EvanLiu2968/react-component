@@ -6,7 +6,7 @@
 
 二维码以 **`canvas`** 标签展示。
 
-::: demo Qrcode 组件一般只需设置`url`和`width`属性，默认前景色为纯黑，背景色为纯白。
+::: demo Qrcode 组件一般只需设置`text`和`width`属性，默认前景色为纯黑，背景色为纯白。
 ```js
 render() {
   return (
@@ -16,14 +16,14 @@ render() {
       <Qrcode 
         text={'https://github.com/EvanLiu2968/react-component/issues?utf8=%E2%9C%93&q=is%3Aopen'}
         width={300}
-        margin={4}
+        margin={3}
         color={'#20A0FF'}/>
       <Qrcode 
         text={'https://www.evanliu2968.com.cn'}
         width={200}
         color={'#FF4949'}
         bgColor={'#FF494911'}
-        margin={3}/>
+        margin={2}/>
     </div>
   )
 }
@@ -41,7 +41,7 @@ render() {
     <div>
       <Qrcode 
         text={'https://www.evanliu2968.com.cn'}
-        logo={'https://www.evanliu2968.com.cn/public/images/horse.png'}
+        logo={'https://raw.githubusercontent.com/EvanLiu2968/clover/master/cdn/images/horse.png'}
         errorCorrectionLevel={'H'}
         maskPattern={0}
         logoWidth={40}/>

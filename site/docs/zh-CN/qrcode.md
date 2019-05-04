@@ -41,7 +41,7 @@ render() {
     <div>
       <Qrcode 
         text={'https://www.evanliu2968.com.cn'}
-        logo={'https://www.evanliu2968.com.cn/public/images/horse.png'}
+        logo={'https://raw.githubusercontent.com/EvanLiu2968/clover/master/cdn/images/horse.png'}
         errorCorrectionLevel={'H'}
         maskPattern={0}
         logoWidth={40}/>

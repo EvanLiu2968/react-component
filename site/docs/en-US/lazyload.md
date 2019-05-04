@@ -10,7 +10,7 @@
 render() {
   return (
     <div>
-      <Lazyload.Img src='https://www.evanliu2968.com.cn/public/images/horse.png' />
+      <Lazyload.Img src='https://raw.githubusercontent.com/EvanLiu2968/clover/master/cdn/images/images/horse.png' />
       <Lazyload 
       style={{height:'200px'}} 
       offset={100}  
